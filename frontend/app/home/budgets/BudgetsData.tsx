@@ -22,6 +22,7 @@ import {
 } from "lucide-react";
 import { toast } from "react-hot-toast";
 import { api } from "@/lib/api";
+import { useRouter } from "next/navigation";
 
 /* ---------------- TYPES ---------------- */
 
@@ -127,6 +128,10 @@ const BudgetsData = () => {
   const [showModal, setShowModal] = useState(false);
   const [loading, setLoading] = useState(false);
   const [deleteId, setDeleteId] = useState<string | null>(null);
+  const router = useRouter();
+  const handleAskFinsight = () => {
+    router.push("/home/aiinsights")
+  }
 
   const [formData, setFormData] = useState({
     type: "category",
@@ -248,7 +253,7 @@ const BudgetsData = () => {
             Add budget
           </button>
 
-          <button className="inline-flex items-center gap-2 px-5 py-3 rounded-xl border border-slate-200 text-slate-700 hover:bg-slate-50 transition">
+          <button className="inline-flex items-center gap-2 px-5 py-3 rounded-xl border border-slate-200 text-slate-700 hover:bg-slate-50 transition" onClick={handleAskFinsight}>
             <Sparkles className="w-5 h-5 text-violet-600" />
             Ask FinSight
           </button>

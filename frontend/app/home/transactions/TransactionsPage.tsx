@@ -18,9 +18,22 @@ import {
   BarChart3,
   PlusCircle,
   Sparkles,
+  Utensils,
+  Car,
+  Film,
+  Wallet,
+  ShoppingBag,
+  Lightbulb,
+  HeartPulse,
+  GraduationCap,
+  FileText,
 } from "lucide-react";
+
+
+
 import { toast } from "react-hot-toast";
 import { api } from "@/lib/api";
+import { useRouter } from "next/navigation";
 interface Transaction {
   _id: string;
   type: "income" | "expense";
@@ -199,8 +212,8 @@ const TransactionsPage = () => {
         handleCloseModal();
         toast.success(
           editMode
-            ? "Transaction updated successfully 🎉"
-            : "Transaction added successfully 🎉"
+            ? "Transaction updated successfully "
+            : "Transaction added successfully "
         );
       } else {
         toast.error(res.message || "Failed to save transaction");
@@ -276,25 +289,32 @@ const TransactionsPage = () => {
   };
 
   const getCategoryIcon = (category: string) => {
-    const icons: Record<string, string> = {
-      "Food & Dining": "🛒",
-      Transport: "🚗",
-      Entertainment: "🎬",
-      Income: "💰",
-      Shopping: "🛍️",
-      "Bills & Utilities": "💡",
-      Healthcare: "🏥",
-      Education: "📚",
-      Other: "📝",
+    const icons: Record<string, JSX.Element> = {
+      "Food & Dining": <Utensils className="w-5 h-5 text-orange-500" />,
+      Transport: <Car className="w-5 h-5 text-blue-500" />,
+      Entertainment: <Film className="w-5 h-5 text-purple-500" />,
+      Income: <Wallet className="w-5 h-5 text-green-600" />,
+      Shopping: <ShoppingBag className="w-5 h-5 text-pink-500" />,
+      "Bills & Utilities": <Lightbulb className="w-5 h-5 text-yellow-500" />,
+      Healthcare: <HeartPulse className="w-5 h-5 text-red-500" />,
+      Education: <GraduationCap className="w-5 h-5 text-indigo-500" />,
+      Other: <FileText className="w-5 h-5 text-slate-500" />,
     };
-    return icons[category] || "📝";
+  
+    return icons[category] ?? (
+      <FileText className="w-5 h-5 text-slate-400" />
+    );
   };
-
+  
   const toggleRowSelection = (id: string) => {
     setSelectedRows((prev) =>
       prev.includes(id) ? prev.filter((rowId) => rowId !== id) : [...prev, id]
     );
   };
+  const router = useRouter();
+  const handleAskFinsight = () => {
+    router.push("/home/aiinsights")
+  }
 
   const toggleAllRows = () => {
     setSelectedRows((prev) =>
@@ -320,7 +340,7 @@ const TransactionsPage = () => {
         </h2>
 
         <p className="text-slate-500 mb-6 leading-relaxed">
-          Add your first transaction to unlock insights, budgets, and AI-powered
+          Add your first transaction to unlock insights, budgets, and Powered
           financial recommendations.
         </p>
 
@@ -333,7 +353,7 @@ const TransactionsPage = () => {
             Add transaction
           </button>
 
-          <button className="inline-flex items-center gap-2 px-5 py-3 rounded-xl border border-slate-200 text-slate-700 hover:bg-slate-50 transition">
+          <button className="inline-flex items-center gap-2 px-5 py-3 rounded-xl border border-slate-200 text-slate-700 hover:bg-slate-50 transition" onClick={handleAskFinsight}>
             <Sparkles className="w-5 h-5 text-violet-600" />
             Ask FinSight
           </button>
@@ -554,10 +574,10 @@ const TransactionsPage = () => {
             </p>
           </div>
           <div className="flex items-center gap-3">
-            <button className="flex items-center gap-2 px-4 py-2.5 bg-white border border-slate-300 text-slate-700 font-medium rounded-lg hover:bg-slate-50 transition-all shadow-sm">
+            {/* <button className="flex items-center gap-2 px-4 py-2.5 bg-white border border-slate-300 text-slate-700 font-medium rounded-lg hover:bg-slate-50 transition-all shadow-sm">
               <Download className="w-4 h-4" />
               <span className="hidden sm:inline">Export CSV</span>
-            </button>
+            </button> */}
             <button
               onClick={() => handleOpenModal()}
               className="flex items-center gap-2 px-4 py-2.5 bg-black text-white font-medium rounded-lg transition-all shadow-lg "

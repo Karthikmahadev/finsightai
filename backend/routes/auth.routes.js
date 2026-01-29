@@ -8,6 +8,7 @@ import {
   changePassword,
   updateProfileInfo,
   getProfile,
+  forgotPassword,
 } from "../controllers/auth.controller.js";
 import { protect } from "../middleware/auth.middleware.js";
 
@@ -35,6 +36,7 @@ const upload = multer({
 router.post("/register", registerUser);
 router.post("/verify-otp", verifyOtp);
 router.post("/login", loginUser);
+router.put("/forgot-password", forgotPassword);
 
 /* ---------- PROTECTED ---------- */
 router.get("/me", protect, getProfile);

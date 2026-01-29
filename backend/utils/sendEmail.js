@@ -13,7 +13,14 @@ export const sendOTPEmail = async (email, otp) => {
     <div style="font-family: Arial, sans-serif; background-color: #f8fafc; padding: 24px;">
       <div style="max-width: 520px; margin: auto; background: #ffffff; border-radius: 12px; box-shadow: 0 10px 25px rgba(0,0,0,0.08); overflow: hidden;">
         
-        <div style="background: linear-gradient(135deg, #7c3aed, #6366f1); padding: 20px; text-align: center;">
+        <div style="background:#000000; padding: 20px; text-align: center;">
+        <img
+        src="https://i.ibb.co/1JqWrkvK/skbjbfcr.jpg"
+        alt="FinSight AI Logo"
+        width="36"
+        height="36"
+        style="margin-right:10px;"
+      />
           <h1 style="color: #ffffff; margin: 0; font-size: 22px;">FinSight AI</h1>
           <p style="color: #e9d5ff; margin: 4px 0 0; font-size: 13px;">
             Smarter insights for your money

@@ -71,8 +71,14 @@ const AccountSettings = () => {
   });
 
  /* ---------------- GENERAL STATE ---------------- */
- const [profileName, setProfileName] = useState("John Doe");
- const [profileEmail, setProfileEmail] = useState("john.doe@example.com");
+ const [profileName, setProfileName] = useState("");
+ const [profileEmail, setProfileEmail] = useState("");
+ useEffect(() => {
+  const email = localStorage.getItem("email");
+  if (email) {
+    setProfileEmail(email);
+  }
+}, []);
  const [profileImage, setProfileImage] = useState<File | null>(null);
  const [successMessage, setSuccessMessage] = useState<string | null>(null);
 
@@ -82,6 +88,7 @@ const AccountSettings = () => {
 
     if (res.success && res.data?.user) {
       setProfileName(res.data.user.name || "");
+     
       if (res.data.user.profileImage) {
         setProfileImage(res.data.user.profileImage as any);
       }
@@ -158,7 +165,6 @@ const clearAll = () => setNotifications([]);
 
  const tabs = [
    { id: "general", label: "General" },
-   { id: "notifications", label: "Notifications" },
    { id: "security", label: "Security" },
  ];
 
@@ -388,17 +394,17 @@ const handleProfileUpdate = async () => {
       </div>
 
       <div>
-        <label className="block text-sm font-medium text-slate-700 mb-2">
-          Email Address
-        </label>
-        <input
-          type="email"
-          value={profileEmail}
-          onChange={(e) => setProfileEmail(e.target.value)}
-          className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:outline-none"
-          placeholder="Enter your email"
-        />
-      </div>
+  <label className="block text-sm font-medium text-slate-700 mb-2">
+    Email Address
+  </label>
+  <input
+    type="email"
+    value={profileEmail}
+    readOnly
+    className="w-full px-4 py-3 border border-slate-300 rounded-lg bg-slate-100 text-slate-600 cursor-not-allowed focus:outline-none"
+  />
+</div>
+
     </div>
 
 
@@ -423,85 +429,7 @@ const handleProfileUpdate = async () => {
   {/* ======================================================
                 NOTIFICATIONS TAB
             ====================================================== */}
-            {activeTab === "notifications" && (
-              <div className="space-y-5">
-              {/* Header */}
-              <div className="flex items-center justify-between">
-                <h2 className="text-lg font-semibold text-slate-900">
-                  Notifications
-                </h2>
-                <div className="flex items-center gap-3">
-                  <span className="text-xs text-slate-400">
-                    {notifications.length} alerts
-                  </span>
-                  {notifications.length > 0 && (
-                    <button
-                      onClick={clearAll}
-                      className="text-xs text-red-500 hover:underline"
-                    >
-                      Clear all
-                    </button>
-                  )}
-                </div>
-              </div>
         
-              {/* Notification List */}
-              <div className="rounded-xl bg-white shadow-sm divide-y divide-slate-100">
-                {notifications.length === 0 && (
-                  <div className="p-6 text-center text-slate-400 text-sm">
-                    No notifications 🎉
-                  </div>
-                )}
-        
-                {notifications.map((n) => {
-                  const Icon = iconMap[n.type];
-        
-                  return (
-                    <div
-                      key={n.id}
-                      onClick={() => markAsRead(n.id)}
-                      className={`flex gap-4 p-4 transition cursor-pointer
-                      ${n.unread ? "bg-slate-50" : "hover:bg-slate-50"}`}
-                    >
-                      {/* Icon */}
-                      <div
-                        className={`w-10 h-10 rounded-full flex items-center justify-center ${colorMap[n.status]}`}
-                      >
-                        <Icon className="w-5 h-5" />
-                      </div>
-        
-                      {/* Content */}
-                      <div className="flex-1 min-w-0">
-                        <div className="flex items-center justify-between gap-2">
-                          <p className="text-sm font-medium text-slate-900 truncate">
-                            {n.title}
-                          </p>
-                          <span className="text-xs text-slate-400">
-                            {n.time}
-                          </span>
-                        </div>
-                        <p className="text-sm text-slate-500 mt-1">
-                          {n.description}
-                        </p>
-                      </div>
-        
-                      {/* Actions */}
-                      <button
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          dismissNotification(n.id);
-                        }}
-                        className="text-slate-400 hover:text-red-500"
-                      >
-                        <X className="w-4 h-4" />
-                      </button>
-                    </div>
-                  );
-                })}
-              </div>
-            </div>
-       
-            )}
 
 {activeTab === "security" && (
   <>
@@ -649,7 +577,7 @@ const handleProfileUpdate = async () => {
               </div>
             </div>
 
-            <div className="pt-8 border-t border-slate-200">
+            {/* <div className="pt-8 border-t border-slate-200">
               <div className="flex items-start gap-4 mb-4">
                 <div className="w-10 h-10 bg-violet-100 rounded-lg flex items-center justify-center flex-shrink-0">
                   <Shield className="w-5 h-5 text-violet-600" />
@@ -691,7 +619,9 @@ const handleProfileUpdate = async () => {
                   <p>We strongly recommend enabling two-factor authentication to protect your account from unauthorized access.</p>
                 </div>
               </div>
-            </div></>
+            </div> */}
+            
+            </>
 )}
 
            

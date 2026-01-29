@@ -10,7 +10,7 @@ const poppins = Poppins({
 });
 
 export const metadata: Metadata = {
-  title: "FinSight AI",
+  title: "FinSight",
   description: "Finance Tracker",
 };
 

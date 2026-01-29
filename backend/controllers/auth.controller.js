@@ -80,15 +80,33 @@ export const loginUser = async (req, res) => {
   const { email, password } = req.body;
 
   const user = await User.findOne({ email });
-  if (!user || !user.isVerified)
-    return res.status(401).json({ message: "Invalid credentials" });
+
+  // ❌ User not found
+  if (!user) {
+    return res.status(404).json({
+      message: "Account not found. Please sign up first.",
+    });
+  }
+
+  // ❌ Email not verified
+  if (!user.isVerified) {
+    return res.status(403).json({
+      message: "Please verify your email before logging in.",
+    });
+  }
 
   const isMatch = await bcrypt.compare(password, user.password);
-  if (!isMatch)
-    return res.status(401).json({ message: "Invalid credentials" });
 
+  // ❌ Wrong password
+  if (!isMatch) {
+    return res.status(401).json({
+      message: "Incorrect email or password.",
+    });
+  }
+
+  // ✅ Success
   res.json({
-    token: generateToken(user), // Pass the full user object to generateToken
+    token: generateToken(user),
     user: {
       id: user._id,
       name: user.name,
@@ -96,6 +114,39 @@ export const loginUser = async (req, res) => {
     },
   });
 };
+
+/* ---------- FORGOT PASSWORD ---------- */
+export const forgotPassword = async (req, res) => {
+  try {
+    const { email, newPassword } = req.body;
+
+    if (!email || !newPassword) {
+      return res
+        .status(400)
+        .json({ message: "Email and new password are required" });
+    }
+
+    const user = await User.findOne({ email });
+
+    if (!user || !user.isVerified) {
+      return res.status(404).json({ message: "User not found" });
+    }
+
+    const hashedPassword = await bcrypt.hash(newPassword, 10);
+    user.password = hashedPassword;
+
+    await user.save();
+
+    res.json({
+      success: true,
+      message: "Password updated successfully",
+    });
+  } catch (error) {
+    console.error("Forgot password error:", error);
+    res.status(500).json({ message: "Server error" });
+  }
+};
+
 
 /* UPDATE USER PROFILE */
 export const updateProfile = async (req, res) => {

@@ -10,11 +10,10 @@ import { useRouter } from "next/navigation";
 const Success = () => {
   const router = useRouter();
   const [countdown, setCountdown] = useState(5); // 5-second countdown
-  const [email] = useState("arjun...@gmail.com");
 
   useEffect(() => {
     if (countdown === 0) {
-      router.replace("/dashboard"); // redirect to dashboard after 5 seconds
+      router.replace("/home/dashboard"); // redirect to dashboard after 5 seconds
       return;
     }
 
@@ -48,7 +47,7 @@ const Success = () => {
                 </svg>
               </div>
               <span className="text-lg font-semibold text-gray-900">
-                FinSight AI
+                FinSight 
               </span>
             </div>
 
@@ -104,7 +103,7 @@ const Success = () => {
               <img
                 src="/success1.jpg"
                 className="absolute inset-0 w-full h-full object-cover"
-                alt="AI Dashboard"
+                alt="Dashboard"
               />
             </div>
           </div>

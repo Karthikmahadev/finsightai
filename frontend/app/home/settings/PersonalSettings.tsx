@@ -169,7 +169,7 @@ const PersonalSettings = () => {
                     </li>
                     <li className="flex items-center gap-2 text-sm text-slate-600">
                       <Check className="w-4 h-4 text-blue-600" />
-                      <span>Basic AI insights</span>
+                      <span>Basic insights</span>
                     </li>
                   </ul>
                   <button className="w-full py-2.5 bg-slate-200 text-slate-500 font-medium rounded-lg cursor-not-allowed">
@@ -192,7 +192,7 @@ const PersonalSettings = () => {
                     </li>
                     <li className="flex items-center gap-2 text-sm text-slate-600">
                       <Check className="w-4 h-4 text-violet-600" />
-                      <span>Advanced AI insights</span>
+                      <span>Advanced insights</span>
                     </li>
                     <li className="flex items-center gap-2 text-sm text-slate-600">
                       <Check className="w-4 h-4 text-violet-600" />

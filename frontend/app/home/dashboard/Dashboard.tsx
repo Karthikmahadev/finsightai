@@ -19,7 +19,18 @@ import {
   CheckCircle,
   Award,
   Zap,
+  ShoppingCart,
+  Car,
+  Film,
+  Utensils,
+  HeartPulse,
+  Lightbulb,
+  BookOpen,
+  HelpCircle,
 } from "lucide-react";
+
+
+
 import { useRouter } from "next/navigation";
 import { api } from "@/lib/api";
 import DashboardEmptyState from "./DashboardEmptyState";
@@ -126,6 +137,8 @@ const Dashboard = () => {
   const [loading, setLoading] = useState(true);
   const [activeTab, setActiveTab] = useState<"trends" | "categories">("trends");
 
+
+  
   /* ---------- FETCH DATA ---------- */
   useEffect(() => {
     const token = localStorage.getItem("token");
@@ -227,6 +240,32 @@ const Dashboard = () => {
       subtext: `${overview.currentMonth.savingsRate.toFixed(1)}% of income`,
     },
   ];
+
+  const getTransactionIcon = (category: string) => {
+    const iconProps = "w-5 h-5 text-slate-600";
+  
+    switch (category) {
+      case "Food & Dining":
+        return <Utensils className={iconProps} />;
+      case "Transport":
+        return <Car className={iconProps} />;
+      case "Entertainment":
+        return <Film className={iconProps} />;
+      case "Shopping":
+        return <ShoppingCart className={iconProps} />;
+      case "Healthcare":
+        return <HeartPulse className={iconProps} />;
+      case "Bills & Utilities":
+        return <Lightbulb className={iconProps} />;
+      case "Education":
+        return <BookOpen className={iconProps} />;
+      case "Income":
+        return <IndianRupee className={iconProps} />;
+      default:
+        return <HelpCircle className={iconProps} />;
+    }
+  };
+  
 
   /* ---------- RENDER ---------- */
   return (
@@ -507,9 +546,10 @@ const Dashboard = () => {
                     key={idx}
                     className="flex items-center gap-3 p-3 hover:bg-slate-50 rounded-lg transition-all cursor-pointer"
                   >
-                    <div className="w-10 h-10 bg-slate-100 rounded-lg flex items-center justify-center text-xl flex-shrink-0">
-                      {tx.icon}
-                    </div>
+                  <div className="w-10 h-10 bg-slate-100 rounded-lg flex items-center justify-center flex-shrink-0">
+  {getTransactionIcon(tx.category)}
+</div>
+
                     <div className="flex-1 min-w-0">
                       <p className="text-sm font-medium text-slate-800 truncate">
                         {tx.description}

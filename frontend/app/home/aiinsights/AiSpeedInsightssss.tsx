@@ -8,6 +8,7 @@ import {
   Send,
   ChevronRight,
   MoreVertical,
+  Flame, Zap, Lightbulb
 } from "lucide-react";
 import { api } from "@/lib/api";
 import {
@@ -117,6 +118,18 @@ const AiSpeedInsightssss = () => {
 
   const [actions, setActions] = useState<Action[]>([]);
 
+  const getPriorityIcon = (priority: "high" | "medium" | "low") => {
+    switch (priority) {
+      case "high":
+        return <Flame className="w-5 h-5 text-red-500" />;
+      case "medium":
+        return <Zap className="w-5 h-5 text-yellow-500" />;
+      case "low":
+      default:
+        return <Lightbulb className="w-5 h-5 text-blue-500" />;
+    }
+  };
+  
   const fetchInsights = async () => {
     setLoading(true);
     const res = await api<any>("/api/ai/finsight");
@@ -367,7 +380,7 @@ const actionCount = actions.length;
               </div>
               <div>
                 <h1 className="text-2xl font-bold text-slate-800">
-                  AI Spending Insights
+                  Spending Insights
                 </h1>
                 <p className="text-sm text-slate-500">
                   Analysis based on your {meta.currentMonth} transactions
@@ -639,7 +652,8 @@ const actionCount = actions.length;
                 className="flex items-start gap-4 p-4 bg-gradient-to-br from-slate-50 to-blue-50 border border-slate-200 rounded-xl hover:shadow-md transition-all cursor-pointer group"
               >
                 <div className="w-10 h-10 bg-white rounded-lg flex items-center justify-center text-xl flex-shrink-0 shadow-sm group-hover:scale-110 transition-transform">
-                  {action.priority === "high" ? "🔥" : action.priority === "medium" ? "⚡" : "💡"}
+                {getPriorityIcon(action.priority)}
+
                 </div>
               
                 <div className="flex-1">

@@ -37,26 +37,27 @@ export const api = async <T = any>(
       data = null;
     }
 
-    // ------------------- HANDLE TOKEN EXPIRY -------------------
-    if (res.status === 401) {
-      if (typeof window !== "undefined") {
-        toast.error("Token expired. Logging out in 5 seconds...");
+// ------------------- HANDLE TOKEN EXPIRY (SAFE) -------------------
+if (
+  res.status === 401 &&
+  data?.message?.toLowerCase().includes("token")
+) {
+  if (typeof window !== "undefined") {
+    toast.error("Session expired. Please login again.");
 
-        // Clear token
-        localStorage.removeItem("token");
+    localStorage.removeItem("token");
 
-        // Redirect to login after 5 seconds
-        setTimeout(() => {
-          window.location.href = "/";
-        }, 5000);
-      }
+    setTimeout(() => {
+      window.location.href = "/";
+    }, 3000);
+  }
 
-      return {
-        success: false,
-        message: data?.message || "Unauthorized. Token expired.",
-      };
-    }
-    // ------------------------------------------------------------
+  return {
+    success: false,
+    message: "Session expired",
+  };
+}
+// ------------------------------------------------------------
 
     if (!res.ok) {
       return {

@@ -1,6 +1,12 @@
 import { BarChart3, PlusCircle, Sparkles } from "lucide-react";
+import { useRouter } from "next/navigation";
 
 export default function DashboardEmptyState() {
+  const router = useRouter();
+  const handleAskFinsight = () => {
+    router.push("/home/aiinsights")
+  }
+
   return (
     <div className="flex items-center justify-center min-h-[70vh] px-4">
       <div className="relative max-w-md w-full bg-white rounded-3xl p-10 shadow-xl border border-slate-100 overflow-hidden text-center">
@@ -19,7 +25,7 @@ export default function DashboardEmptyState() {
         </h2>
 
         <p className="text-slate-500 mb-6 leading-relaxed">
-          Add your first transaction to unlock insights, budgets, and AI-powered
+          Add your first transaction to unlock insights, budgets, and Powered
           financial recommendations.
         </p>
 
@@ -29,7 +35,7 @@ export default function DashboardEmptyState() {
             Add transaction
           </button>
 
-          <button className="inline-flex items-center gap-2 px-5 py-3 rounded-xl border border-slate-200 text-slate-700 hover:bg-slate-50 transition">
+          <button className="inline-flex items-center gap-2 px-5 py-3 rounded-xl border border-slate-200 text-slate-700 hover:bg-slate-50 transition" onClick={handleAskFinsight}>
             <Sparkles className="w-5 h-5 text-violet-600" />
             Ask FinSight
           </button>

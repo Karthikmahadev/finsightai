@@ -35,6 +35,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
   const [checkedAuth, setCheckedAuth] = useState(false);
   const handleLogout = () => {
     localStorage.removeItem("token");
+    localStorage.removeItem("email")
     window.location.href = "/"; // Redirect to the homepage after logging out
   };
 
@@ -80,7 +81,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
           />
           <aside className="absolute left-0 top-0 h-full w-64 bg-white flex flex-col">
             <div className="p-6 border-b border-slate-200 flex justify-between">
-              <span className="text-xl font-bold">FinSight AI</span>
+              <span className="text-xl font-bold">FinSight</span>
               <button onClick={() => setSidebarOpen(false)}>
                 <X className="w-5 h-5" />
               </button>
@@ -109,7 +110,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
               </div>
             </div>
 
-            <div className="flex items-center gap-3">
+            {/* <div className="flex items-center gap-3">
               <div className="hidden sm:flex items-center gap-2 bg-slate-100 rounded-lg px-4 py-2">
                 <Calendar className="w-4 h-4 text-slate-500" />
                 <span className="text-sm font-medium text-slate-700">
@@ -124,7 +125,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
                 <Bell className="w-5 h-5 text-slate-600" />
                 <span className="absolute top-1 right-1 w-2 h-2 bg-rose-500 rounded-full" />
               </button>
-            </div>
+            </div> */}
           </div>
         </header>
 
@@ -140,7 +141,7 @@ function SidebarContent({ pathname, onLogout }: { pathname: string ,  onLogout: 
     <>
       <div className="flex gap-4 items-center p-6 border-slate-200">
         <img src="/skbjbfcr.jpg" className="rounded-full h-[30px] w-[30px]" />
-        <h1 className="font-semibold">FinSight AI</h1>
+        <h1 className="font-semibold">FinSight </h1>
       </div>
 
       <nav className="flex-1 p-4 space-y-3">

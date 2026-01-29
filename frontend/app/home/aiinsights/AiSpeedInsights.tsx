@@ -92,7 +92,7 @@ const AiSpeedInsights = () => {
                 <Sparkles className="w-5 h-5 text-white" />
               </div>
               <div>
-                <h1 className="text-2xl font-bold text-slate-800">AI Spending Insights</h1>
+                <h1 className="text-2xl font-bold text-slate-800"> Spending Insights</h1>
                 <p className="text-sm text-slate-500">Analysis based on your October 2024 transactions</p>
               </div>
             </div>
@@ -249,7 +249,7 @@ const AiSpeedInsights = () => {
               <div className="flex items-start gap-3">
                 <Sparkles className="w-5 h-5 text-blue-600 mt-0.5 flex-shrink-0" />
                 <div className="text-sm text-blue-800">
-                  <p className="font-medium mb-1">AI Tip</p>
+                  <p className="font-medium mb-1">Tip</p>
                   <p>Implementing these 3 actions could save you approximately ₹8,500 next month!</p>
                 </div>
               </div>

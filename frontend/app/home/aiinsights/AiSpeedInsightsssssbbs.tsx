@@ -100,7 +100,7 @@ const AiSpeedInsightsssssbbs = () => {
             <Sparkles className="text-white" />
           </div>
           <div>
-            <h1 className="text-2xl font-bold">AI Spending Insights</h1>
+            <h1 className="text-2xl font-bold">Spending Insights</h1>
             <p className="text-sm text-slate-500">
               Analysis based on your {meta.currentMonth} transactions
             </p>

@@ -1,3 +1,4 @@
+"use client";
 import { useState } from "react";
 import { Sparkles, RefreshCw, AlertTriangle, TrendingUp, PiggyBank, Send, ChevronRight, MoreVertical } from 'lucide-react';
 

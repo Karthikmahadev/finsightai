@@ -1,3 +1,4 @@
+"use client";
 import { BarChart3, PlusCircle, Sparkles } from "lucide-react";
 import { useRouter } from "next/navigation";
 

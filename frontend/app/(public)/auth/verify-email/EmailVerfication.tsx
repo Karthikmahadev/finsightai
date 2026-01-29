@@ -22,7 +22,14 @@ const ButtonLoader = () => (
 const EmailVerification = () => {
   const router = useRouter();
   const params = useSearchParams();
-  const email = params.get("email");
+
+
+  // ✅ store email in state to prevent SSR errors
+  const [email, setEmail] = useState<string | null>(null);
+  useEffect(() => {
+    // ✅ only access params on client
+    setEmail(params.get("email"));
+  }, [params]);
 
   const OTP_LENGTH = 6;
 
@@ -102,6 +109,8 @@ const EmailVerification = () => {
     }
   };
   
+  // ✅ render nothing until email is set
+  if (!email) return null;
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-zinc-50 via-white to-zinc-50 flex items-center justify-center p-4 relative overflow-hidden">

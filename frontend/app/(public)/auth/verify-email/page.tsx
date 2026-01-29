@@ -1,8 +1,9 @@
 "use client";
 
+export const dynamic = "force-dynamic"; // prevent any SSR or static prerender
 import EmailVerification from "./EmailVerfication";
 
-export const dynamic = "force-dynamic";
+ // must be at the very top
 
 
 export default function Page() {

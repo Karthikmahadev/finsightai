@@ -11,17 +11,19 @@ export const registerUser = async (req, res) => {
   try {
     const { name, email, password } = req.body;
 
-    if (!name || !email || !password)
+    if (!name || !email || !password) {
       return res.status(400).json({ message: "All fields required" });
+    }
 
     const existing = await User.findOne({ email });
-    if (existing && existing.isVerified)
+    if (existing && existing.isVerified) {
       return res.status(400).json({ message: "User already exists" });
+    }
 
     const hashedPassword = await bcrypt.hash(password, 10);
     const otp = Math.floor(100000 + Math.random() * 900000).toString();
 
-    await User.findOneAndUpdate(
+    const user = await User.findOneAndUpdate(
       { email },
       {
         name,
@@ -34,20 +36,24 @@ export const registerUser = async (req, res) => {
       { upsert: true, new: true }
     );
 
-    try {
-      await sendOTPEmail(email, otp);
-    } catch (emailError) {
-      console.error("Email sending failed:", emailError);
-      // Optionally respond with an error, or just log and continue
-      return res.status(500).json({ message: "Failed to send OTP email" });
-    }
+    // ✅ RESPOND IMMEDIATELY (DO NOT WAIT FOR EMAIL)
+    res.status(201).json({
+      success: true,
+      message: "Account created. Please verify your email.",
+      email: user.email,
+    });
 
-    res.status(201).json({ message: "OTP sent to email" });
+    // 🔥 SEND EMAIL IN BACKGROUND
+    sendOTPEmail(email, otp)
+      .then(() => console.log("📧 OTP email sent"))
+      .catch(err => console.error("❌ OTP email failed:", err));
+
   } catch (error) {
     console.error("Register error:", error);
     res.status(500).json({ message: "Server error" });
   }
 };
+
 
 /* VERIFY OTP → REGISTER + LOGIN */
 export const verifyOtp = async (req, res) => {

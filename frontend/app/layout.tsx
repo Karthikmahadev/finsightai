@@ -1,8 +1,7 @@
-
-import type { Metadata } from "next";
-import { Poppins } from "next/font/google";
+// app/layout.tsx (server)
 import "./globals.css";
-import { Toaster } from "react-hot-toast"; // ✅ import Toaster
+import { Poppins } from "next/font/google";
+import ClientLayout from "./ClientLayout";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -10,32 +9,16 @@ const poppins = Poppins({
   variable: "--font-poppins",
 });
 
-export const metadata: Metadata = {
+export const metadata = {
   title: "FinSight",
   description: "Finance Tracker",
 };
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
       <body className={`${poppins.variable} font-sans antialiased`}>
-        {children}
-
-        {/* 🔥 Global Toaster */}
-        <Toaster
-          position="top-right"
-          reverseOrder={false}
-          toastOptions={{
-            duration: 5000, // Toast disappears after 5 seconds
-            style: {
-              fontFamily: "inherit",
-            },
-          }}
-        />
+        <ClientLayout>{children}</ClientLayout>
       </body>
     </html>
   );

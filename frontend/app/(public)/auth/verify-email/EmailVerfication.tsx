@@ -235,7 +235,7 @@ const EmailVerification = () => {
                       Check Your Email
                     </h3>
                     <p className="text-sm text-zinc-600 leading-relaxed">
-                      We've sent a 4-digit verification code to{" "}
+                      We've sent a 6-digit verification code to{" "}
                       <span className="font-bold text-zinc-900 block mt-1">
                         {email}
                       </span>

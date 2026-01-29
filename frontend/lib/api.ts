@@ -1,6 +1,7 @@
 import { toast } from "react-hot-toast";
 
-const API_URL = "http://localhost:5000";
+const API_URL =
+  process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000";
 
 export type ApiResponse<T> = {
   success: boolean;
@@ -78,3 +79,7 @@ if (
     };
   }
 };
+
+// Optional helper for images
+export const getApiUrl = (path: string) => `${API_URL}${path}`;
+

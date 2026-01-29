@@ -15,7 +15,7 @@ import {
   TrendingUp,
   CheckCircle,
 } from "lucide-react";
-import { api } from "@/lib/api";
+import { api ,getApiUrl} from "@/lib/api";
 
 
 type NotificationType = "transaction" | "warning" | "insights" | "success";
@@ -351,7 +351,7 @@ const handleProfileUpdate = async () => {
            src={
              profileImage instanceof File
                ? URL.createObjectURL(profileImage)
-               : `http://localhost:5000${profileImage}`
+               : getApiUrl(profileImage)
            }
            alt="Profile"
            className="w-full h-full object-cover"

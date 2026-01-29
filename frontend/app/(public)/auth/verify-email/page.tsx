@@ -1,11 +1,15 @@
 "use client";
 
-export const dynamic = "force-dynamic"; // prevent any SSR or static prerender
+import { Suspense } from "react";
 import EmailVerification from "./EmailVerfication";
 
- // must be at the very top
 
+export const dynamic = "force-dynamic";
 
 export default function Page() {
-  return <EmailVerification />;
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <EmailVerification />
+    </Suspense>
+  );
 }

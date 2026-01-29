@@ -24,9 +24,6 @@ app.use(
   })
 );
 
-// ✅ Handle preflight
-app.options("*", cors());
-
 
 // ⬇️ Increase limits (important)
 app.use(express.json({ limit: "10mb" }));

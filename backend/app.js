@@ -13,7 +13,7 @@ const app = express();
 
 // ✅ Enable CORS
 app.use(cors({
-  origin: "http://localhost:3000", // allow your frontend origin
+  origin: "*",
   credentials: true,               // allow cookies if needed
 }));
 

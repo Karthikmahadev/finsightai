@@ -1,7 +1,10 @@
 "use client";
+
 import EmailVerification from "./EmailVerfication";
-export default function page(){
-    return (
-        <><EmailVerification /></>
-    )
+
+export const dynamic = "force-dynamic";
+
+
+export default function Page() {
+  return <EmailVerification />;
 }

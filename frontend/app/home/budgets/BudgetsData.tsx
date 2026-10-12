@@ -614,7 +614,7 @@ const BudgetsData = () => {
             <div className="flex gap-3">
               <button
                 onClick={() => setDeleteId(null)}
-                className="flex-1 border rounded-lg py-2"
+                className="flex-1 border rounded-lg py-2 "
               >
                 Cancel
               </button>
@@ -662,7 +662,7 @@ const BudgetsData = () => {
               onChange={(e) =>
                 setFormData({ ...formData, type: e.target.value })
               }
-              className="w-full px-4 py-2.5 border border-slate-300 rounded-lg"
+              className="w-full px-4 py-2.5 text-black border border-slate-300 rounded-lg"
             >
               <option value="category">Category Budget</option>
               <option value="overall">Overall Budget</option>
@@ -677,7 +677,7 @@ const BudgetsData = () => {
                 onChange={(e) =>
                   setFormData({ ...formData, category: e.target.value })
                 }
-                className="w-full px-4 py-2.5 border border-slate-300 rounded-lg"
+                className="w-full px-4 py-2.5 text-black border border-slate-300 rounded-lg"
               >
                 <option value="">Select category</option>
                 {categories.map((c) => (
@@ -698,13 +698,13 @@ const BudgetsData = () => {
               onChange={(e) =>
                 setFormData({ ...formData, limit: e.target.value })
               }
-              className="w-full px-4 py-2.5 border border-slate-300 rounded-lg"
+              className="w-full px-4 py-2.5 text-black border border-slate-300 rounded-lg"
             />
 
             <div className="flex gap-3 pt-4">
               <button
                 onClick={() => setShowModal(false)}
-                className="flex-1 border border-slate-300 rounded-lg py-2"
+                className="flex-1 border text-black border-slate-300 rounded-lg py-2"
               >
                 Cancel
               </button>

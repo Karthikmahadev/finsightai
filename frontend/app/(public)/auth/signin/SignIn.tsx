@@ -189,7 +189,7 @@ const SignIn = () => {
                   }
                   onKeyPress={handleKeyPress}
                   placeholder="Enter your email"
-                  className={`w-full px-5 py-4 border-2 rounded-xl bg-zinc-50/50 backdrop-blur-sm
+                  className={`w-full px-5 py-4 border-2 rounded-xl bg-zinc-50/50 backdrop-blur-sm placeholder:text-zinc-400 text-zinc-900
                     focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 
                     transition-all duration-300 font-medium
                     ${
@@ -247,7 +247,7 @@ const SignIn = () => {
                   }
                   onKeyPress={handleKeyPress}
                   placeholder="Enter your password"
-                  className={`w-full px-5 py-4 pr-12 border-2 rounded-xl bg-zinc-50/50 backdrop-blur-sm
+                  className={`w-full px-5 py-4 pr-12 border-2 rounded-xl bg-zinc-50/50 backdrop-blur-sm placeholder:text-zinc-400 text-zinc-900
                     focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 
                     transition-all duration-300 font-medium
                     ${

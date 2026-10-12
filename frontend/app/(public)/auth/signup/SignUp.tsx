@@ -68,7 +68,7 @@ const SignUp = () => {
       }
 
       router.push(`/auth/verify-email?email=${email}`);
-      localStorage.setItem("email",email)
+      localStorage.setItem("email", email)
     } catch (err: any) {
       setLoading(false);
       setError(err.message || "Something went wrong");
@@ -186,13 +186,12 @@ const SignUp = () => {
                     onBlur={() => setTouched((prev) => ({ ...prev, name: true }))}
                     onKeyPress={handleKeyPress}
                     placeholder="Enter your full name"
-                    className={`w-full px-5 py-4 border-2 rounded-xl bg-zinc-50/50 backdrop-blur-sm
-                      focus:outline-none focus:ring-2 focus:ring-amber-500/20 focus:border-amber-500 
-                      transition-all duration-300 font-medium
-                      ${
-                        touched.name && !name
-                          ? "border-red-500 bg-red-50/30"
-                          : "border-zinc-200 hover:border-zinc-300"
+                    className={`w-full px-5 py-4 border-2 rounded-xl bg-zinc-50/50 backdrop-blur-sm text-zinc-900 placeholder:text-zinc-400
+    focus:outline-none focus:ring-2 focus:ring-amber-500/20 focus:border-amber-500 
+    transition-all duration-300 font-medium
+    ${touched.name && !name
+                        ? "border-red-500 bg-red-50/30"
+                        : "border-zinc-200 hover:border-zinc-300"
                       }`}
                   />
                   <motion.div
@@ -235,13 +234,12 @@ const SignUp = () => {
                     onBlur={() => setTouched((prev) => ({ ...prev, email: true }))}
                     onKeyPress={handleKeyPress}
                     placeholder="your.email@example.com"
-                    className={`w-full px-5 py-4 border-2 rounded-xl bg-zinc-50/50 backdrop-blur-sm
-                      focus:outline-none focus:ring-2 focus:ring-amber-500/20 focus:border-amber-500 
-                      transition-all duration-300 font-medium
-                      ${
-                        touched.email && !email
-                          ? "border-red-500 bg-red-50/30"
-                          : "border-zinc-200 hover:border-zinc-300"
+                    className={`w-full px-5 py-4 border-2 rounded-xl bg-zinc-50/50 backdrop-blur-sm text-zinc-900 placeholder:text-zinc-400
+    focus:outline-none focus:ring-2 focus:ring-amber-500/20 focus:border-amber-500 
+    transition-all duration-300 font-medium
+    ${touched.email && !email
+                        ? "border-red-500 bg-red-50/30"
+                        : "border-zinc-200 hover:border-zinc-300"
                       }`}
                   />
                   <motion.div
@@ -281,18 +279,15 @@ const SignUp = () => {
                     type={showPassword ? "text" : "password"}
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
-                    onBlur={() =>
-                      setTouched((prev) => ({ ...prev, password: true }))
-                    }
+                    onBlur={() => setTouched((prev) => ({ ...prev, password: true }))}
                     onKeyPress={handleKeyPress}
                     placeholder="Create a strong password"
-                    className={`w-full px-5 py-4 pr-12 border-2 rounded-xl bg-zinc-50/50 backdrop-blur-sm
-                      focus:outline-none focus:ring-2 focus:ring-amber-500/20 focus:border-amber-500 
-                      transition-all duration-300 font-medium
-                      ${
-                        touched.password && !password
-                          ? "border-red-500 bg-red-50/30"
-                          : "border-zinc-200 hover:border-zinc-300"
+                    className={`w-full px-5 py-4 pr-12 border-2 rounded-xl bg-zinc-50/50 backdrop-blur-sm text-zinc-900 placeholder:text-zinc-400
+    focus:outline-none focus:ring-2 focus:ring-amber-500/20 focus:border-amber-500 
+    transition-all duration-300 font-medium
+    ${touched.password && !password
+                        ? "border-red-500 bg-red-50/30"
+                        : "border-zinc-200 hover:border-zinc-300"
                       }`}
                   />
                   <motion.button
@@ -366,14 +361,12 @@ const SignUp = () => {
                       <motion.div
                         initial={{ scale: 0 }}
                         animate={{ scale: 1 }}
-                        className={`w-2 h-2 rounded-full ${
-                          password.length >= 8 ? "bg-green-500" : "bg-zinc-300"
-                        }`}
+                        className={`w-2 h-2 rounded-full ${password.length >= 8 ? "bg-green-500" : "bg-zinc-300"
+                          }`}
                       />
                       <span
-                        className={`text-xs font-medium ${
-                          password.length >= 8 ? "text-green-600" : "text-zinc-500"
-                        }`}
+                        className={`text-xs font-medium ${password.length >= 8 ? "text-green-600" : "text-zinc-500"
+                          }`}
                       >
                         At least 8 characters
                       </span>
@@ -422,11 +415,10 @@ const SignUp = () => {
                   disabled={loading}
                   whileHover={!loading ? { scale: 1.02, y: -2 } : {}}
                   whileTap={!loading ? { scale: 0.98 } : {}}
-                  className={`w-full py-4 rounded-xl font-bold shadow-lg transition-all relative overflow-hidden group ${
-                    loading
-                      ? "bg-zinc-400 cursor-not-allowed"
-                      : "bg-gradient-to-r from-zinc-900 to-zinc-700 hover:shadow-xl hover:shadow-zinc-900/25"
-                  } text-white text-lg`}
+                  className={`w-full py-4 rounded-xl font-bold shadow-lg transition-all relative overflow-hidden group ${loading
+                    ? "bg-zinc-400 cursor-not-allowed"
+                    : "bg-gradient-to-r from-zinc-900 to-zinc-700 hover:shadow-xl hover:shadow-zinc-900/25"
+                    } text-white text-lg`}
                 >
                   <span className="relative z-10 flex items-center justify-center gap-2">
                     {loading ? (
@@ -543,7 +535,7 @@ const SignUp = () => {
                 alt="Dashboard"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-zinc-900/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-              
+
               {/* Floating stat card */}
               {/* <motion.div
                 initial={{ opacity: 0, y: 20 }}

@@ -31,7 +31,8 @@ export default function DashboardEmptyState() {
         </p>
 
         <div className="flex flex-col sm:flex-row gap-3 justify-center">
-          <button className="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-black text-white font-medium hover:bg-slate-800 transition">
+          <button className="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-black text-white font-medium hover:bg-slate-800 transition" 
+           onClick={() => window.location.href = "/home/transactions"}>
             <PlusCircle className="w-5 h-5" />
             Add transaction
           </button>

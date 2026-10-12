@@ -81,7 +81,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
           />
           <aside className="absolute left-0 top-0 h-full w-64 bg-white flex flex-col">
             <div className="p-6 border-b border-slate-200 flex justify-between">
-              <span className="text-xl font-bold">FinSight</span>
+              <span className="text-xl font-bold text-black">FinSight</span>
               <button onClick={() => setSidebarOpen(false)}>
                 <X className="w-5 h-5" />
               </button>
@@ -141,7 +141,7 @@ function SidebarContent({ pathname, onLogout }: { pathname: string ,  onLogout: 
     <>
       <div className="flex gap-4 items-center p-6 border-slate-200">
         <img src="/skbjbfcr.jpg" className="rounded-full h-[30px] w-[30px]" />
-        <h1 className="font-semibold">FinSight </h1>
+        <h1 className="font-semibold text-black">FinSight </h1>
       </div>
 
       <nav className="flex-1 p-4 space-y-3">

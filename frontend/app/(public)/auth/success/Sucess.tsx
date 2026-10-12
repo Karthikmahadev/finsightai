@@ -63,7 +63,7 @@ const Success = () => {
 
             <div className="space-y-5">
               <button
-                onClick={() => router.replace("/dashboard")}
+                onClick={() => router.replace("/home/dashboard")}
                 className="w-full bg-blue-600 text-white font-semibold py-3.5 rounded-lg hover:bg-blue-700 transition-all shadow-lg shadow-blue-600/30 mb-4"
               >
                 Go to Dashboard Now
